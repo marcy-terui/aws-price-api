@@ -1,0 +1,13 @@
+profile: private
+region: us-east-1
+configuration:
+  name: aws-price-api
+  runtime: python2.7
+  role: {{ env['AWS_LAMBDA_ROLE'] }}
+  handler: index.lambda_handler
+  description: Get specified data from AWS Price List API.
+  timeout: 10
+  memory_size: 128
+secret:
+  key: {{ env['AWS_KMS_KEY_ID'] }}
+  cipher_texts: {}
