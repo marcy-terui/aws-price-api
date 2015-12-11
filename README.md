@@ -1,1 +1,3 @@
-# aws-price-api
+aws-price-api
+=============
+Get specified data from AWS Price List API.
