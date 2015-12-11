@@ -1,0 +1,74 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Get specified data from AWS Price List API.",
+    "version" : "0.0.1",
+    "title" : "AWS Price API"
+  },
+  "host" : "aws-price-api.willy.works",
+  "basePath" : "/v1",
+  "schemes" : [ "http" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/offer/{offer}" : {
+      "post" : {
+        "summary" : "Get specified data from AWS Price List API.",
+        "description" : "Get specified data from AWS Price List API.\n",
+        "parameters" : [ {
+          "name" : "offer",
+          "in" : "path",
+          "description" : "Offer code",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "condition",
+          "description" : "Search condition",
+          "required" : true,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "value" : {
+                  "type" : "string"
+                },
+                "key" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "An array of products and prices",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "properties" : {
+                  "product" : {
+                    "type" : "object",
+                    "properties" : { }
+                  },
+                  "price" : {
+                    "type" : "object",
+                    "properties" : { }
+                  }
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Unexpected error",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : { }
+}
