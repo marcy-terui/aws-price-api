@@ -38,8 +38,10 @@ def lambda_handler(event, contect):
     results = []
     for sku, product in match_products.items():
         product['price'] = []
-        for price in data_list['terms'][event['term']].get(sku).values():
-            product['price'].append(price)
+        prices = data_list['terms'][event['term']].get(sku)
+        if prices is not None:
+            for price in prices.values():
+                product['price'].append(price)
         results.append(product)
 
     return results
